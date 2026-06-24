@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: html-deploy
+  labels:
+    app: html-app
+    environment: prod
+
+spec:
+  replicas: 3
+
+  selector:
+    matchLabels:
+      app: html-web
+
+  template:
+    metadata:
+      labels:
+        app: html-web
+
+    spec:
+      containers:
+      - name: html-docker
+        image: prajwalda/html:1
+
+        ports:
+        - containerPort: 8080
+
+        resources:
+          requests:
+            cpu: "200m"
+            memory: "120Mi"
+
+          limits:
+            cpu: "300m"
+            memory: "200Mi"
