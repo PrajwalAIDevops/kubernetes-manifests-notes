@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: html-svc
+  labels:
+    app: html-svc
+
+spec:
+  selector:
+    app: html-web
+
+  ports:
+  - port: 80
+    targetPort: 80
+  
+
+  type: NodePort
